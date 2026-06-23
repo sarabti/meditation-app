@@ -38,7 +38,7 @@ const Page = () => {
             showsVerticalScrollIndicator={false}
             renderItem={({ item }) => (
               <Pressable
-                onPress={() => router.push(`/`)}
+                onPress={() => router.push(`/meditate/${item.id}`)}
                 className="h-48 my-3 rounded-lg overflow-hidden"
               >
                 <ImageBackground

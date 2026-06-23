@@ -1,5 +1,5 @@
+import TimerProvider from "@/context/TimerContext";
 import "@/global.css";
-// import TimerProvider from "@/context/TimerContext";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
@@ -28,20 +28,21 @@ export default function RootLayout() {
 
   return (
     <SafeAreaProvider>
-      {/* <TimerProvider> */}
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        {/* <Stack.Screen
-                        name="meditate/[id]"
-                        options={{ headerShown: false }}
-                    /> */}
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        {/* <Stack.Screen
-                        name="(modal)/adjust-meditation-duration"
-                        options={{ headerShown: false, presentation: "modal" }}
-                    /> */}
-      </Stack>
-      {/* </TimerProvider> */}
+      <TimerProvider>
+        <Stack>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="meditate/[id]" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="(modal)/adjust-meditation-duration"
+            options={{
+              headerShown: false,
+              presentation: "formSheet",
+              animation: "slide_from_bottom",
+            }}
+          />
+        </Stack>
+      </TimerProvider>
     </SafeAreaProvider>
   );
 }
